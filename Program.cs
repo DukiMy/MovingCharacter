@@ -8,145 +8,132 @@ namespace MovingCharacter
 
         static public int StartPosY { get; set; } = 20;
 
-        public static void TestMoveDown(int x, int y)
+        public static void PrintPlayer(int x, int y)
         {
-            do
-            {
-                y++;
+            Console.SetCursorPosition(x, y);
+            Console.Write($"{new string("■")}");    // Prints head.
 
+            Console.SetCursorPosition(x, y + 1);
+            Console.Write($"{new string("|")}");    // Prints torso.
+
+            Console.SetCursorPosition(x - 1, y + 1);
+            Console.Write($"{new string("-")}");    // Prints left arm.
+
+            Console.SetCursorPosition(x + 1, y + 1);
+            Console.Write($"{new string("-")}");    // Prints right arm.
+
+            Console.SetCursorPosition(x - 1, y + 2);
+            Console.Write($"{new string("| |")}");  // Prints legs.
+
+            Console.SetCursorPosition(0, 0);
+
+        }
+
+        public static void MoveDown(int x, int y)
+        {
+            y++;
+
+            try
+            {
                 // Delete
                 Console.SetCursorPosition(x - 1, y - 1);
-                Console.WriteLine($"{new string("   ")}");
+                Console.Write($"{new string("   ")}");
 
                 Console.SetCursorPosition(x - 1, y);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 Console.SetCursorPosition(x + 1, y);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 // Write
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine($"{new string("■")}");
+                PrintPlayer(x, y);
+            }
+            catch (Exception)
+            {
+                y -= 1;
+                Console.SetCursorPosition(0, 0);
+            }
 
-                Console.SetCursorPosition(x, y + 1);
-                Console.WriteLine($"{new string("|")}");
-
-                Console.SetCursorPosition(x - 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x + 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x - 1, y + 2);
-                Console.WriteLine($"{new string("| |")}");
-
-                StartPosY = y;
-
-            } while (1 + 1 == 0);
+            StartPosY = y;
         }
 
-        public static void TestMoveUp(int x, int y)
+        public static void MoveUp(int x, int y)
         {
-            do
-            {
-                y--;
+            y--;
 
+            try
+            {
                 // Delete
                 Console.SetCursorPosition(x - 1, y + 3);
-                Console.WriteLine($"{new string("   ")}");
+                Console.Write($"{new string("   ")}");
 
                 // Write
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine($"{new string("■")}");
+                PrintPlayer(x, y);
+            }
+            catch (Exception)
+            {
+                y += 1;
+                Console.SetCursorPosition(0, 0);
+            }
 
-                Console.SetCursorPosition(x, y + 1);
-                Console.WriteLine($"{new string("|")}");
-
-                Console.SetCursorPosition(x - 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x + 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x - 1, y + 2);
-                Console.WriteLine($"{new string("| |")}");
-
-                StartPosY = y;
-
-            } while (1 + 1 == 0);
+            StartPosY = y;
         }
 
-        public static void TestMoveLeft(int x, int y)
+        public static void MoveLeft(int x, int y)
         {
-            do
-            {
-                x--;
+            x--;
 
+            try
+            {
                 // Delete
                 Console.SetCursorPosition(x + 1, y);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 Console.SetCursorPosition(x + 2, y + 1);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 Console.SetCursorPosition(x + 2, y + 2);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 // Write
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine($"{new string("■")}");
+                PrintPlayer(x, y);
+            }
+            catch (Exception)
+            {
+                x += 1;
+                Console.SetCursorPosition(0, 0);
+            }
 
-                Console.SetCursorPosition(x, y + 1);
-                Console.WriteLine($"{new string("|")}");
-
-                Console.SetCursorPosition(x - 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x + 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x - 1, y + 2);
-                Console.WriteLine($"{new string("| |")}");
-
-                StartPosX = x;
-
-            } while (1 + 1 == 0);
+            StartPosX = x;
         }
 
-        public static void TestMoveRight(int x, int y)
+        public static void MoveRight(int x, int y)
         {
-            do
+            x++;
+
+
+            try
             {
-                x++;
                 // Delete
                 Console.SetCursorPosition(x - 1, y);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 Console.SetCursorPosition(x - 2, y + 1);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 Console.SetCursorPosition(x - 2, y + 2);
-                Console.WriteLine($"{new string(" ")}");
+                Console.Write($"{new string(" ")}");
 
                 // Write
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine($"{new string("■")}");
+                PrintPlayer(x, y);
+            }
+            catch (Exception)
+            {
+                x -= 1;
+                Console.SetCursorPosition(0, 0);
+            }
 
-                Console.SetCursorPosition(x, y + 1);
-                Console.WriteLine($"{new string("|")}");
-
-                Console.SetCursorPosition(x - 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x + 1, y + 1);
-                Console.WriteLine($"{new string("-")}");
-
-                Console.SetCursorPosition(x - 1, y + 2);
-                Console.WriteLine($"{new string("| |")}");
-
-                StartPosX = x;
-
-            } while (1 + 1 == 0);
+            StartPosX = x;
         }
 
         public static char Input()
@@ -167,6 +154,8 @@ namespace MovingCharacter
                 {
                     Console.Beep(500, 90);
                     Console.Beep(350, 200);
+                    Console.SetCursorPosition(0, 0);
+
                 }
 
             } while (loop);
@@ -176,24 +165,26 @@ namespace MovingCharacter
 
         public static void Controls()
         {
+            PrintPlayer(StartPosX, StartPosY);
+
             while (1 + 1 == 2)
             {
                 switch (Input())
                 {
                     case 'W':
-                        TestMoveUp(StartPosX, StartPosY);
+                        MoveUp(StartPosX, StartPosY);
                         break;
 
                     case 'A':
-                        TestMoveLeft(StartPosX, StartPosY);
+                        MoveLeft(StartPosX, StartPosY);
                         break;
 
                     case 'S':
-                        TestMoveDown(StartPosX, StartPosY);
+                        MoveDown(StartPosX, StartPosY);
                         break;
 
                     case 'D':
-                        TestMoveRight(StartPosX, StartPosY);
+                        MoveRight(StartPosX, StartPosY);
                         break;
                 }
             }
@@ -201,8 +192,8 @@ namespace MovingCharacter
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Tryck på 'W', 'A', 'S'  eller 'D'.");
-
+            Console.Write("Tryck på 'W', 'A', 'S'  eller 'D'.");
+            Console.CursorVisible = false;
             Program.Controls();
         }
     }
